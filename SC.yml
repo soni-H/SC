@@ -1,0 +1,8 @@
+---
+- name: Pull docker image of scientific calculator on remote server
+  hosts: all
+  tasks:
+    - name: Pull image
+      docker_image:
+        name: sonihdocker/sc_image_jenkins
+        source: pull
