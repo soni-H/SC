@@ -1,6 +1,9 @@
 ---
 - name: Pull docker image of scientific calculator on remote server
   hosts: all
+  service:
+    - name=docker 
+      state=started
   tasks:
     - name: Pull image
       docker_image:
