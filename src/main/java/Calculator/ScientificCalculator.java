@@ -10,7 +10,7 @@ public class ScientificCalculator {
 
     public static void main(String ar[]) {
         ScientificCalculator scientificCalculator=new ScientificCalculator();
-        System.out.println("Welcome to the scientific calculator. This is the new UI V2 .Select \n 1. to perform Square root \n 2. to perform Factorial \n 3. to perform natural logarithm \n 4. to perform power \n");
+        System.out.println("Welcome to the scientific calculator. How about this.Select \n 1. to perform Square root \n 2. to perform Factorial \n 3. to perform natural logarithm \n 4. to perform power \n");
         int choice;
         Scanner scanner=new Scanner(System.in);
         try{
