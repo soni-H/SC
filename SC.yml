@@ -5,4 +5,3 @@
     - name: Pull image
       docker_image:
         name: sonihdocker/sc_image_jenkins
-        source: pull
