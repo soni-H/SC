@@ -13,7 +13,7 @@ public class ScientificCalculator {
 
     public static void main(String ar[]) {
         ScientificCalculator scientificCalculator=new ScientificCalculator();
-        System.out.println("Welcome to the scientific calculator.V1 Select \n 1. to perform Square root \n 2. to perform Factorial \n 3. to perform natural logarithm \n 4. to perform power \n");
+        System.out.println("Welcome to the scientific calculator. V2 Select \n 1. to perform Square root \n 2. to perform Factorial \n 3. to perform natural logarithm \n 4. to perform power \n");
         int choice=0;
         Scanner scanner=new Scanner(System.in);
         try{
@@ -43,11 +43,8 @@ public class ScientificCalculator {
         }
         System.out.println("Output is : "+scientificCalculator.getCalculations(arg1,arg2,choice));
 
-
-
-
     }
-    public String getCalculations(double arg1,double arg2,int choice){
+    public double getCalculations(double arg1,double arg2,int choice){
         if(choice==1)
             return getSquareRoot(arg1);
         if(choice==2)
@@ -56,32 +53,32 @@ public class ScientificCalculator {
             return getNaturalLogarithm(arg1);
         return getPower(arg1,arg2);
     }
-    public String getSquareRoot(double arg){
+    public double getSquareRoot(double arg){
         logger.info("Square root of "+arg+" : "+Math.sqrt(arg));
-        return Double.toString(Math.sqrt(arg));
+        return Math.sqrt(arg);
     }
-    public String getFactorial(double arg){
+    public double getFactorial(double arg){
         double result=1;
         for(int i=1;i<=arg;i++)
-            result*=arg;
+            result*=i;
         logger.info("Factorial of "+arg+" : "+result);
-        return Double.toString(result);
+        return result;
     }
 
-    public String getNaturalLogarithm(double arg){
+    public double getNaturalLogarithm(double arg){
         double result=0;
         try {
             result = Math.log(arg);
             logger.info("Natural Logarithm of "+arg+" : "+result);
         }catch(Exception e){
             logger.error(e.getLocalizedMessage());
-            return e.getLocalizedMessage();
+            return -1;
         }
-        return Double.toString(result);
+        return result;
     }
 
-    public String getPower(double arg1,double arg2){
+    public double getPower(double arg1,double arg2){
         logger.info("Power of "+arg1+" raise to the power of "+arg2+" : "+Math.pow(arg1,arg2));
-        return Double.toString(Math.pow(arg1,arg2));
+        return Math.pow(arg1,arg2);
     }
 }
