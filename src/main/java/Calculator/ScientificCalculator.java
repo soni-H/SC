@@ -2,16 +2,19 @@ package Calculator;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ScientificCalculator {
+    private static final Logger logger = LogManager.getLogger(ScientificCalculator.class);
     public ScientificCalculator() {
 
     }
 
     public static void main(String ar[]) {
         ScientificCalculator scientificCalculator=new ScientificCalculator();
-        System.out.println("Welcome to the scientific calculator. okayy.One more try.How there!!.Select \n 1. to perform Square root \n 2. to perform Factorial \n 3. to perform natural logarithm \n 4. to perform power \n");
-        int choice;
+        System.out.println("Welcome to the scientific calculator.Select \n 1. to perform Square root \n 2. to perform Factorial \n 3. to perform natural logarithm \n 4. to perform power \n");
+        int choice=0;
         Scanner scanner=new Scanner(System.in);
         try{
             choice=scanner.nextInt();
@@ -20,6 +23,7 @@ public class ScientificCalculator {
         }catch(InputMismatchException e){
             e.getLocalizedMessage();
             System.out.println("Please enter a valid choice");
+            logger.error("User entered invalid choice : "+choice);
             return;
         }
         double arg1,arg2;
@@ -33,6 +37,7 @@ public class ScientificCalculator {
             }
         }catch(InputMismatchException e){
             System.out.println("Please enter valid argument(s)");
+            logger.error("User entered invalid argument(s)");
             e.getLocalizedMessage();
             return;
         }
@@ -52,12 +57,14 @@ public class ScientificCalculator {
         return getPower(arg1,arg2);
     }
     public String getSquareRoot(double arg){
+        logger.info("Square root of "+arg+" : "+Math.sqrt(arg));
         return Double.toString(Math.sqrt(arg));
     }
     public String getFactorial(double arg){
         double result=1;
         for(int i=1;i<=arg;i++)
             result*=arg;
+        logger.info("Factorial of "+arg+" : "+result);
         return Double.toString(result);
     }
 
@@ -65,13 +72,16 @@ public class ScientificCalculator {
         double result=0;
         try {
             result = Math.log(arg);
+            logger.info("Natural Logarithm of "+arg+" : "+result);
         }catch(Exception e){
+            logger.error(e.getLocalizedMessage());
             return e.getLocalizedMessage();
         }
         return Double.toString(result);
     }
 
     public String getPower(double arg1,double arg2){
+        logger.info("Power of "+arg1+" raise to the power of "+arg2+" : "+Math.pow(arg1,arg2));
         return Double.toString(Math.pow(arg1,arg2));
     }
 }
