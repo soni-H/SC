@@ -13,36 +13,40 @@ public class ScientificCalculator {
 
     public static void main(String ar[]) {
         ScientificCalculator scientificCalculator=new ScientificCalculator();
-        System.out.println("Hi there, welcome to the scientific calculator. Please select \n 1. to perform Square root \n 2. to perform Factorial \n 3. to perform natural logarithm \n 4. to perform power \n");
-        int choice=0;
-        Scanner scanner=new Scanner(System.in);
-        try{
-            choice=scanner.nextInt();
-            if(choice<1 || choice>4)
-                throw new InputMismatchException();
-        }catch(InputMismatchException e){
-            e.getLocalizedMessage();
-            System.out.println("Please enter a valid choice");
-            logger.error("User entered invalid choice : "+choice);
-            return;
-        }
-        double arg1,arg2;
-        arg2=0;
-        try{
-            System.out.println("Enter the argument\n");
-            arg1=scanner.nextDouble();
-            if(choice==4){
-                System.out.println("Enter the power\n");
-                arg2=scanner.nextDouble();
+        System.out.println("Hi there, welcome to the scientific calculator");
+        while(true) {
+            System.out.println("Please select \n 1. to perform Square root \n 2. to perform Factorial \n 3. to perform natural logarithm \n 4. to perform power \n 5. to exit");
+            int choice = 0;
+            Scanner scanner = new Scanner(System.in);
+            try {
+                choice = scanner.nextInt();
+                if (choice < 1 || choice > 5)
+                    throw new InputMismatchException();
+            } catch (InputMismatchException e) {
+                e.getLocalizedMessage();
+                System.out.println("Please enter a valid choice");
+                logger.error("User entered invalid choice : " + choice);
+                return;
             }
-        }catch(InputMismatchException e){
-            System.out.println("Please enter valid argument(s)");
-            logger.error("User entered invalid argument(s)");
-            e.getLocalizedMessage();
-            return;
+            if(choice==5)
+                return;
+            double arg1, arg2;
+            arg2 = 0;
+            try {
+                System.out.println("Enter the argument\n");
+                arg1 = scanner.nextDouble();
+                if (choice == 4) {
+                    System.out.println("Enter the power\n");
+                    arg2 = scanner.nextDouble();
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Please enter valid argument(s)");
+                logger.error("User entered invalid argument(s)");
+                e.getLocalizedMessage();
+                return;
+            }
+            System.out.println("Output is : " + scientificCalculator.getCalculations(arg1, arg2, choice));
         }
-        System.out.println("Output is : "+scientificCalculator.getCalculations(arg1,arg2,choice));
-
     }
     public double getCalculations(double arg1,double arg2,int choice){
         if(choice==1)
