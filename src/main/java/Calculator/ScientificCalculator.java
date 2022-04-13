@@ -28,8 +28,10 @@ public class ScientificCalculator {
                 logger.error("User entered invalid choice : " + choice);
                 return;
             }
-            if(choice==5)
+            if(choice==5){
+                System.out.println("Thank you. Bye !!");
                 return;
+            }
             double arg1, arg2;
             arg2 = 0;
             try {
