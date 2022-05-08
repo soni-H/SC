@@ -13,7 +13,7 @@ public class ScientificCalculator {
 
     public static void main(String ar[]) {
         ScientificCalculator scientificCalculator=new ScientificCalculator();
-        System.out.println("Hi there, welcome to the scientific calculator");
+        System.out.println("Hi there, Welcome to the scientific calculator");
         while(true) {
             System.out.println("Please select \n 1. to perform Square root \n 2. to perform Factorial \n 3. to perform natural logarithm \n 4. to perform power \n 5. to exit");
             int choice = 0;
